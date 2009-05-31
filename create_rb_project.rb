@@ -4,13 +4,19 @@
 
 require 'fileutils'
 
-if ARGV[0] == nil
+project_name = ARGV[0]
+
+if project_name == nil
   puts "You must provide a project name."
   puts "Usage: ./create_project.rb project_name"
   exit
 end
 
-project_name = ARGV[0]
+if test(?d, project_name)
+  puts "A directory #{project_name} already exists."
+  exit
+end
+
 lib = project_name + "/lib"
 test = project_name + "/test"
 bin = project_name + "/bin"
@@ -20,7 +26,7 @@ main = lib + "/" + project_name + ".rb"
 test_helper = test + "/test_helper.rb"
 executable = bin + "/" + project_name
 
-FileUtils.rm_rf project_name
+#FileUtils.rm_rf project_name
 
 puts "creating: " + project_name
 Dir.mkdir project_name
