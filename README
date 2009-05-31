@@ -1,0 +1,4 @@
+Simple ruby script to generate directories and file for a new ruby project
+
+Usage:
+./create_project.rb new_project_name
